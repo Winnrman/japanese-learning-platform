@@ -1,0 +1,14 @@
+I like to <verb>
+I want to <verb>
+I forgot to <verb>
+I need to <verb>
+It is <adjective> - i-adjective | na-adjective
+It is not <adjective> - i-adjective | na-adjective
+I think it's <adjective> - adjective
+I am a <noun>
+This is a <noun>
+Because it is <adjective> - adjective
+Even if it is <adjective> - adjective
+I can <verb>
+Do you like <noun>?
+What is <noun>?

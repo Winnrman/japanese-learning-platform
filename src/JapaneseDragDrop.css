@@ -1,0 +1,172 @@
+.drag-drop-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: flex;
+  gap: 15px;
+}
+
+.stats span {
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+.english-prompt {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.sentence-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 30px 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  min-height: 80px;
+}
+
+.drop-slot {
+  min-width: 80px;
+  min-height: 50px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.drop-slot.hover {
+  background-color: #e0f7fa;
+  border-color: #4dd0e1;
+}
+
+.drop-slot.filled {
+  border: 2px solid #81c784;
+  background-color: #e8f5e9;
+}
+
+.drop-slot.empty .slot-placeholder {
+  color: #999;
+  font-size: 12px;
+}
+
+.word-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #e3f2fd;
+  border-radius: 8px;
+}
+
+.word-card {
+  padding: 10px 15px;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: grab;
+  transition: all 0.2s;
+  font-size: 16px;
+}
+
+.word-card.pool {
+  background-color: #bbdefb;
+}
+
+.word-card.placed {
+  background-color: #c8e6c9;
+}
+
+.word-card.dragging {
+  opacity: 0.5;
+}
+
+.submit-button, .next-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #42a5f5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px 0;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover, .next-button:hover {
+  background-color: #1e88e5;
+}
+
+.submit-button:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.feedback {
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.feedback.correct {
+  background-color: #e8f5e9;
+  border: 2px solid #81c784;
+  color: #2e7d32;
+}
+
+.feedback.incorrect {
+  background-color: #ffebee;
+  border: 2px solid #e57373;
+  color: #c62828;
+}
+
+.srs-feedback {
+  margin-top: 10px;
+  font-style: italic;
+  color: #666;
+}
+
+.hint {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* For correct/incorrect highlighting after submission */
+.drop-slot.correct {
+  border: 2px solid #81c784;
+  background-color: #e8f5e9;
+}
+
+.drop-slot.incorrect {
+  border: 2px solid #e57373;
+  background-color: #ffebee;
+}

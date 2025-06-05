@@ -1,0 +1,29 @@
+we want basic components like <word> and <word> so that the user learns new words and also learns sentence structure. 
+
+Examples:
+I like to <verb>
+I want to <verb>
+I forgot to <verb>
+I need to <verb>
+It is <adjective> - i-adjective | na-adjective
+It is not <adjective> - i-adjective | na-adjective
+I think it's <adjective> - adjective
+I am a <noun>
+This is a <noun>
+Because it is <adjective> - adjective
+Even if it is <adjective> - adjective
+I can <verb>
+Do you like <noun>?
+What is <noun>?
+
+-- Anime based --
+I like the character <noun>
+The animation is <adjective> - i-adjective | na-adjective
+The voice actor is <adjective> - i-adjective | na-adjective
+I want to watch <noun> - noun (anime title or episode)
+Have you seen <noun>? - noun (anime title or scene)
+<character> uses <noun> - noun (weapon, attack, object)
+<character> is <adjective> - i-adjective | na-adjective
+The story made me <verb> - verb (emotion/action like cry, laugh)
+I forgot the name of <noun> - noun (character, attack, anime)
+I need to rewatch <noun> - noun (anime title or episode)
