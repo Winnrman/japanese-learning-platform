@@ -17,6 +17,9 @@ const SignIn = () => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+            console.log(userCredential) //Got this far on June 9 -- Will continue later. 
+            //store userToken in localstorage
+            // localStorage.setItem("authToken", userCredential.authToken)
             navigate('/dashboard');
         }).catch((error) => {
             console.log(error);
