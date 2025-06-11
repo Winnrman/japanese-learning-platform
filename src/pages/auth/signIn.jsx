@@ -4,6 +4,8 @@ import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signIn
 import { useNavigate } from 'react-router-dom';
 import AuthDetails from '../authDetails';
 // import logo from '../../assets/logo.png';
+import { useAuth } from '../auth/AuthContext'
+
 
 const SignIn = () => {
     const navigate = useNavigate();
@@ -14,12 +16,14 @@ const SignIn = () => {
     const [showResetPassword, setShowResetPassword] = useState(false);
 
     const signIn = (e) => {
+
+        // const { login } = useAuth();
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log(userCredential) //Got this far on June 9 -- Will continue later. 
             //store userToken in localstorage
-            // localStorage.setItem("authToken", userCredential.authToken)
+            localStorage.setItem("authToken", userCredential.authToken)
             navigate('/dashboard');
         }).catch((error) => {
             console.log(error);

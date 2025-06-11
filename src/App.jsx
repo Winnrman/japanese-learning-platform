@@ -8,9 +8,10 @@ import SignUp from './pages/auth/signUp';
 import ResetPassword from './pages/auth/ResetPassword';
 import ErrorPage from './pages/errorPage';
 import PrivateRoute from './components/PrivateRoute';
-
+import { AuthProvider } from './pages/auth/AuthContext';
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <Routes>
         <Route path="/" element={<SignIn />} />
@@ -30,6 +31,7 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
+    </AuthProvider>
   );
 }
 

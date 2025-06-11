@@ -1,73 +1,53 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import JapaneseLearning from '../JapaneseLearning';
-import JapaneseDragDrop from '../JapaneseDragDrop';
-import { onAuthStateChanged } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../pages/auth/AuthContext';
 import { auth, db } from '../firebase';
-import { doc, setDoc, getDoc} from "firebase/firestore";
-
+import { doc, getDoc } from 'firebase/firestore';
 
 const Dashboard = () => {
+  const { user, logout } = useAuth();
+  const [firstName, setFirstName] = useState('');
+  const [loading, setLoading] = useState(true);
 
-    const [user, setUser] = React.useState(null);
-    const [firstName, setFirstName] = React.useState('');
-    const [loading, setLoading] = React.useState(true);
-
-
-    useEffect(() => {
+  useEffect(() => {
     const fetchUserData = async () => {
-      const currentUser = auth.currentUser;
+      if (user) {
+        try {
+          const userRef = doc(db, 'users', user.uid);
+          const userSnap = await getDoc(userRef);
 
-      if (currentUser) {
-        const userRef = doc(db, 'users', currentUser.uid);
-        const userSnap = await getDoc(userRef);
-
-        if (userSnap.exists()) {
-          const userData = userSnap.data();
-        console.log('User data:', userData);
-
-          setFirstName(userData.firstName);
-        } else {
-          console.error('No such user document!');
+          if (userSnap.exists()) {
+            const userData = userSnap.data();
+            setFirstName(userData.firstName || '');
+          } else {
+            console.error('No such user document!');
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
         }
       }
-      else{
-        console.log('No user is logged in');
-      }
-
       setLoading(false);
     };
 
     fetchUserData();
-  }, []);
-    
+  }, [user]);
 
-    useEffect(() => {
-        return onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user);
-            } else {
-                setUser(null);
-            }
-        });
-  }, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (!user) {
-        return <div>Loading... (user may not be logged in)</div>;
-    }
+    return <div>User not logged in.</div>;
+  }
 
-    return (
-
-        <div className = "h-fit bg-gradient-to-r from-red-200 to-blue-200 sm:p-4">
-
-<div className = "w-1/2 mx-auto">
-            <h1 className = "text-2xl font-light">Dashboard</h1>
-            <p className = "text-2xl font-semibold">Welcome, {firstName}!</p>
-            {/* <JapaneseLearning /> */}
-            {/* <JapaneseDragDrop /> */}
-        </div>
-        </div>
-    )
-}
+  return (
+    <div className="h-fit bg-gradient-to-r from-red-200 to-blue-200 sm:p-4">
+      <div className="w-1/2 mx-auto">
+        <h1 className="text-2xl font-light">Dashboard</h1>
+        <p className="text-2xl font-semibold">Welcome, {firstName}!</p>
+        <button onClick={logout} className="mt-4 bg-red-500 text-white px-4 py-2 rounded">Sign Out</button>
+      </div>
+    </div>
+  );
+};
 
 export default Dashboard;
