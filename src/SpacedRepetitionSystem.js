@@ -56,6 +56,7 @@ class SpacedRepetitionSystem {
         nextReviewDate.setDate(nextReviewDate.getDate() + newInterval);
 
         return {
+            word,
             ...wordData,
             easinessFactor: newEasinessFactor,
             interval: newInterval,
